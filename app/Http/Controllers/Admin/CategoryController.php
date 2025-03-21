@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 
 
+
 class CategoryController extends Controller
 {
     /**
@@ -23,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -31,7 +32,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+        ]);
+        Category::create($request->all());
+       // $request->session()->flash('success',' Категория добавлена');
+        return redirect()->route('categories.index')->with('success',' Категория добавлена');
     }
 
     /**
@@ -53,16 +59,23 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $category->update($request->all());
+
+        return redirect()->route('admin.categories.index')->with('success', 'Категория обновлена!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        dd(__METHOD__);
+        $category->delete();
+        return redirect()->route('admin.categories.index')->with('success', 'Категория удалена!');
     }
 }

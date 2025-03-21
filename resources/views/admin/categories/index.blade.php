@@ -1,4 +1,4 @@
-@extends('Admin.layouts.layout')
+@extends('layouts.layout')
 
 @section('content')
 
@@ -30,8 +30,8 @@
                 <h3 class="card-title">Список категорий</h3>
             </div>
                 <div class="card-body">
-                < href=" {{ route ('categories create')}}" class="btn btn-primary mb-3">Добавить категорию</а>
-            @1f (count (Scategories) )
+                <a href=" {{ route ('categories.create')}}" class="btn btn-primary mb-3">Добавить категорию</а>
+            @if (count ($categories) )
             <div class="table-responsive">
                 <table class="table table-bordered table-hover text-nowrap">
             <thead>
@@ -39,7 +39,7 @@
                     <th style="width: 30px">#</th>
                     <th>Наименование</th>
                     <th>Slugs</th>
-                    <th>Actiona</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
         <tbody>
@@ -56,7 +56,7 @@
                         @csrf
                          @method ( 'DELETE')
                         <button type="submit" class="btn btn-danger btn-sm"
-                                onclick= "return contirm('Подеверлите удаление')">
+                                onclick= "return confirm('Подтвердите удаление')">
 
                                 <i class="fas fa-trash-alt"></i>
                         </button>

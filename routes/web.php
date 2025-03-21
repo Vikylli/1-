@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
+use App\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +24,6 @@ Route::group(['prefix'=>'admin', 'namespace'=> 'Admin'],function(){
     Route::get('/', [MainController::class, 'index'])->name('admin.index');
 });
 
-Route::group(['prefix'=>'admin', 'namespace'=> 'Admin'],function(){
-    Route::resource('/categories', CategoryController::class, );
+Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin'], function () {
+    Route::resource('categories', 'CategoryController');
 });
