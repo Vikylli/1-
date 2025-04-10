@@ -38,6 +38,10 @@ class CategoryController extends Controller
         Category::create($request->all());
        // $request->session()->flash('success',' Категория добавлена');
         return redirect()->route('categories.index')->with('success',' Категория добавлена');
+        session()->flash('success', 'Запись успешно добавлена!'); 
+        session()->flash('warning', 'Обратите внимание на эту важную информацию!');
+        session()->flash('info', 'Это просто информационное сообщение.'); 
+
     }
 
     /**

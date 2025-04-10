@@ -1,4 +1,4 @@
-<!-- @extends('layouts.layout')
+@extends('layouts.layout')
 
 @section('content')
 <section class="content-header">
@@ -14,7 +14,7 @@
                 </ol>
             </div>
         </div>
-    </div><!-- /.container-fluid -->
+    </div>
 </section>
 
 <section class="content">
@@ -26,14 +26,12 @@
                         <h3 class="card-title">Создание категории</h3>
                     </div>
                     <form role="form" method="POST" action="{{ route('admin.categories.store') }}">
-                        @csrf  {{-- Очень важно для защиты от CSRF атак --}}
+                        @csrf  
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="name">Название</label>  {{-- Изменили id на name для согласованности --}}
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" placeholder="Название">
-                                @error('name')
-                                    <span class="invalid-feedback">{{ $message }}</span>
-                                @enderror
+                                <label for="name">Название</label> 
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ $categoru->title }}" placeholder="Название">
+                                
                             </div>
                         </div>
                         <div class="card-footer">
